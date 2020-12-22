@@ -1,0 +1,168 @@
+openapi: '3.0.1'
+info:
+  title: Test Service
+  version: '2.0'
+  description: Project
+  contact: {}
+servers:
+  - url: ''
+paths:
+  /test/v1/datasources:
+    get:
+      tags:
+        - config/v1
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Datasource'
+          description: Success
+        '404':
+          description: Not Found
+      operationId: get_datasources
+      summary: GET endpoint
+      description: return list of sources
+components:
+  schemas:
+    Datasource:
+      description: ''
+      type: object
+      properties:
+        type:
+          type: string
+          minLength: 1
+        properties:
+          type: object
+          properties:
+            label:
+              type: object
+              properties:
+                type:
+                  type: string
+                  minLength: 1
+                default:
+                  type: string
+                  minLength: 1
+            sources:
+              type: object
+              properties:
+                title:
+                  type: string
+                  minLength: 1
+                type:
+                  type: string
+                  minLength: 1
+                items:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      minLength: 1
+                    properties:
+                      type: object
+                      properties:
+                        id:
+                          type: object
+                          properties:
+                            type:
+                              type: string
+                              minLength: 1
+                            title:
+                              type: string
+                              minLength: 1
+                        transports:
+                          type: object
+                          properties:
+                            type:
+                              type: string
+                              minLength: 1
+                            title:
+                              type: string
+                              minLength: 1
+                            items:
+                              type: object
+                              properties:
+                                type:
+                                  type: string
+                                  minLength: 1
+                                properties:
+                                  type: object
+                                  properties:
+                                    default:
+                                      type: object
+                                      properties:
+                                        type:
+                                          type: string
+                                          minLength: 1
+                                        title:
+                                          type: string
+                                          minLength: 1
+                                    url:
+                                      type: object
+                                      properties:
+                                        type:
+                                          type: string
+                                          minLength: 1
+                                        title:
+                                          type: string
+                                          minLength: 1
+                                    site:
+                                      type: object
+                                      properties:
+                                        type:
+                                          type: string
+                                          minLength: 1
+                                        title:
+                                          type: string
+                                          minLength: 1
+                                        items:
+                                          type: object
+                                          properties:
+                                            type:
+                                              type: string
+                                              minLength: 1
+                                            enum:
+                                              type: array
+                                              items:
+                                                type: string
+      x-examples:
+        example-1:
+          type: string
+          properties:
+            label:
+              type: string
+              default: string
+            sources:
+              title: string
+              type: string
+              items:
+                type: string
+                properties:
+                  id:
+                    type: string
+                    title: string
+                  transports:
+                    type: string
+                    title: string
+                    items:
+                      type: string
+                      properties:
+                        default:
+                          type: string
+                          title: string
+                        url:
+                          type: string
+                          title: string
+                        site:
+                          type: string
+                          title: string
+                          items:
+                            type: string
+                            enum:
+                              - string
+tags:
+  - name: test/v1
+    description: Test API
